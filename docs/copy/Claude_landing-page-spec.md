@@ -1,4 +1,4 @@
-# Landing Page — Outsourcing Company (Compliance · Support · Sales)
+# Morales Solutions — Landing Page (Compliance · Support · Sales)
 
 ## Project Context
 
@@ -90,7 +90,7 @@ Build the page as a single `app/page.tsx` composed of the following section comp
 ### 1. `<Navbar />`
 
 - Fixed top, blur backdrop (`backdrop-blur-md bg-navy/80`)
-- Logo left (text or SVG — placeholder `BRANDNAME` for now)
+- Logo left — text: `Morales Solutions` (or SVG if provided later)
 - Nav links: `Why Us`, `Services`, `Careers`, `Contact`
 - CTA button right: **"Hire a Team"** — red background, cream text, slight pill or sharp rectangle
 - On scroll: add subtle border-bottom transition
@@ -260,7 +260,7 @@ On submit: POST to a Next.js API route `/api/contact` that writes to Google Shee
 - Dark navy, top border in brand red (2px)
 - Logo left
 - Nav links center: Privacy · Terms · Security · Contact
-- Copyright right: `© 2025 [Company Name]. All rights reserved.`
+- Copyright right: `© 2025 Morales Solutions. All rights reserved.`
 
 ---
 
