@@ -1,43 +1,46 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronRight, ShieldCheck, Zap, Globe, BarChart3 } from 'lucide-react'
 
 export default function Hero() {
   const vantaRef = useRef<HTMLDivElement>(null)
-  const [vantaEffect, setVantaEffect] = useState<any>(null)
+  const effectRef = useRef<any>(null)
+  const initializedRef = useRef(false)
 
   useEffect(() => {
-    let effect: any = null
-    
+    if (initializedRef.current || !vantaRef.current) return
+    initializedRef.current = true
+
+    let cancelled = false
+
     const loadVanta = async () => {
       try {
         const THREE = await import('three')
         // @ts-ignore
         const GLOBE = (await import('vanta/dist/vanta.globe.min')).default
-        
-        if (!vantaEffect && vantaRef.current) {
-          effect = GLOBE({
-            el: vantaRef.current,
-            THREE: THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0xB30634,        // Brand Red
-            color2: 0xFF6600,       // Brand Orange
-            backgroundColor: 0x0A0F23, // Brand Navy
-            size: 0.8,
-            points: 12.00,
-            spacing: 18.00,
-            showDots: true
-          })
-          setVantaEffect(effect)
-        }
+
+        if (cancelled || !vantaRef.current) return
+
+        effectRef.current = GLOBE({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0xB30634,        // Brand Red
+          color2: 0xFF6600,       // Brand Orange
+          backgroundColor: 0x0A0F23, // Brand Navy
+          size: 0.8,
+          points: 12.00,
+          spacing: 18.00,
+          showDots: true
+        })
       } catch (err) {
         console.error('Vanta initialization failed:', err)
       }
@@ -46,9 +49,14 @@ export default function Hero() {
     loadVanta()
 
     return () => {
-      if (effect) effect.destroy()
+      cancelled = true
+      if (effectRef.current) {
+        effectRef.current.destroy()
+        effectRef.current = null
+      }
+      initializedRef.current = false
     }
-  }, [vantaEffect])
+  }, [])
 
   return (
     <section 
