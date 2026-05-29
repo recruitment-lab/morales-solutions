@@ -2,25 +2,73 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0f23;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-jakarta);
+  --font-body: var(--font-roboto);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Brand palette */
+  --color-brand-red: #b30634;
+  --color-brand-red-600: #9a052c;
+  --color-brand-orange: #ff6600;
+  --color-brand-orange-400: #ff8533;
+  --color-brand-navy: #0a0f23;
+  --color-brand-cream: #f8e3d0;
+
+  /* Light surfaces */
+  --color-surface: #ffffff;
+  --color-surface-soft: #fff8f3;
+  --color-surface-muted: #fdf1ea;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Brand gradient text helper */
+.text-gradient-brand {
+  background-image: linear-gradient(90deg, #b30634 0%, #ff6600 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes ms-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: ms-fade-up 0.7s ease-out both;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #b30634;
+  color: #fff;
 }
