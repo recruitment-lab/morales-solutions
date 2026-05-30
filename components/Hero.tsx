@@ -1,0 +1,132 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
+
+type VantaInstance = { destroy: () => void };
+
+export default function Hero() {
+  const vantaRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let effect: VantaInstance | null = null;
+    let cancelled = false;
+
+    (async () => {
+      if (!vantaRef.current) return;
+      const THREE = await import("three");
+      // @ts-expect-error - vanta has no bundled types
+      const GLOBE = (await import("vanta/dist/vanta.globe.min")).default;
+      if (cancelled || !vantaRef.current) return;
+      effect = GLOBE({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        backgroundColor: 0x0a0f23,
+        color: 0xff6600, // primary points/lines — brand orange
+        color2: 0xb30634, // secondary highlight — brand red
+        size: 0.9,
+        points: 10,
+        spacing: 15,
+        showDots: true,
+      }) as VantaInstance;
+    })();
+
+    return () => {
+      cancelled = true;
+      effect?.destroy();
+    };
+  }, []);
+
+  return (
+    <section className="relative isolate overflow-hidden">
+      {/* Vanta canvas mount */}
+      <div
+        ref={vantaRef}
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-brand-navy"
+      />
+      {/* Overlays for legibility */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-navy/30 via-brand-navy/40 to-brand-navy"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-grid opacity-[0.35]"
+      />
+
+      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col items-start justify-center px-5 pt-32 pb-20 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/40 bg-brand-red/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-cream/90 font-sans">
+            <ShieldCheck size={14} className="text-brand-orange" />
+            Compliant · Scalable · Secure
+          </div>
+
+          <h1 className="mt-6 font-sans text-4xl font-extrabold leading-[1.05] tracking-tight text-brand-cream sm:text-5xl md:text-6xl lg:text-7xl">
+            Operate with <span className="brand-gradient-text">certainty.</span>
+            <br />
+            Scale without risk.
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-cream/75 sm:text-lg">
+            We deploy specialized teams in compliance operations, customer
+            support, and sales — regulated-market-ready, brand-aligned, and
+            operational from day one.
+          </p>
+
+          <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 rounded-md bg-brand-red px-6 py-3.5 text-sm font-semibold text-brand-cream shadow-[0_16px_48px_-16px_rgba(179,6,52,0.8)] transition hover:bg-brand-orange font-sans"
+            >
+              Build Your Team
+              <ArrowRight
+                size={16}
+                className="transition group-hover:translate-x-0.5"
+              />
+            </Link>
+            <Link
+              href="#why-us"
+              className="inline-flex items-center gap-2 rounded-md border border-brand-cream/25 bg-white/[0.02] px-6 py-3.5 text-sm font-semibold text-brand-cream backdrop-blur-sm transition hover:border-brand-cream/50 hover:bg-white/[0.06] font-sans"
+            >
+              Our Methodology
+            </Link>
+          </div>
+
+          {/* Trust indicators */}
+          <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+            {[
+              { v: "98.6%", k: "Compliance rate" },
+              { v: "72h", k: "Median deployment" },
+              { v: "40+", k: "Regulated industries" },
+              { v: "0", k: "Regulatory sanctions" },
+            ].map((s) => (
+              <div key={s.k} className="border-l border-brand-red/60 pl-3">
+                <dt className="font-sans text-2xl font-bold text-brand-cream sm:text-3xl">
+                  {s.v}
+                </dt>
+                <dd className="mt-1 text-xs uppercase tracking-wider text-brand-cream/60">
+                  {s.k}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      {/* fade to next section */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-brand-navy"
+      />
+    </section>
+  );
+}
