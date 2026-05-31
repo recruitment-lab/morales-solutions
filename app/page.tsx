@@ -15,8 +15,8 @@ export default function Home() {
         <Hero />
         <IndustryStrip />
         <WhyUs />
-        <PhilosophySection />
         <TwoBlocks />
+        <PhilosophySection />
         <CTASection />
       </main>
       <Footer />
