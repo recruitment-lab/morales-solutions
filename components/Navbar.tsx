@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Why Us", href: "/#why-us" },
   { label: "Services", href: "/#services" },
   { label: "Careers", href: "/#careers" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -25,13 +26,13 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_-16px_rgba(10,15,35,0.35)]"
-          : "bg-transparent"
+          ? "bg-brand-navy/90 backdrop-blur-xl shadow-[0_8px_30px_-16px_rgba(10,15,35,0.55)] border-b border-brand-red/20"
+          : "bg-brand-navy/70 backdrop-blur-md"
       }`}
     >
       {/* Brand accent line, fades in on scroll */}
       <div
-        className={`h-0.5 w-full bg-gradient-to-r from-brand-red via-brand-orange to-brand-red transition-opacity duration-300 ${
+        className={`h-0.5 w-full bg-linear-to-r from-brand-red via-brand-orange to-brand-red transition-opacity duration-300 ${
           scrolled ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -41,7 +42,7 @@ export default function Navbar() {
           scrolled ? "h-16" : "h-20"
         }`}
       >
-        <Logo variant={scrolled ? "dark" : "light"} />
+        <Logo variant="light" />
         <div className="hidden items-center gap-2 md:flex">
           {navLinks.map((link) => (
             <Link
@@ -49,31 +50,20 @@ export default function Navbar() {
               href={link.href}
               className={`group relative px-3 py-2 text-sm font-medium transition-colors ${
                 scrolled
-                  ? "text-brand-navy/70 hover:text-brand-red"
-                  : "text-white/85 hover:text-white"
+                  ? "text-brand-cream/85 hover:text-brand-orange"
+                  : "text-brand-cream/85 hover:text-white"
               }`}
             >
               {link.label}
               <span
-                className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-gradient-to-r from-brand-red to-brand-orange transition-transform duration-300 group-hover:scale-x-100`}
+                className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-linear-to-r from-brand-red to-brand-orange transition-transform duration-300 group-hover:scale-x-100`}
               />
             </Link>
           ))}
 
           <Link
-            href="/careers"
-            className={`ml-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-              scrolled
-                ? "text-brand-navy/70 hover:text-brand-red"
-                : "text-white/85 hover:text-white"
-            }`}
-          >
-            Careers
-          </Link>
-
-          <Link
-            href="/services"
-            className="group ml-1 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-red to-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-red/25 ring-1 ring-white/10 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-red/40"
+            href="/contact"
+            className="group ml-1 inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-brand-red to-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-red/25 ring-1 ring-white/10 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-red/40"
           >
             Hire a Team
             <svg
@@ -96,7 +86,7 @@ export default function Navbar() {
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden ${
-            scrolled ? "text-brand-navy" : "text-white"
+            scrolled ? "text-brand-cream" : "text-brand-cream"
           }`}
         >
           <svg
@@ -117,22 +107,22 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-black/5 bg-white/95 backdrop-blur-md md:hidden">
+        <div className="border-t border-brand-red/20 bg-brand-navy/95 backdrop-blur-md md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-brand-navy/80 hover:bg-surface-muted hover:text-brand-red"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-brand-cream/80 hover:bg-brand-navy-700 hover:text-brand-orange"
               >
                 {link.label}
               </Link>
             ))}
             <Link
-              href="/services"
+              href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-gradient-to-r from-brand-red to-brand-orange px-5 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-brand-red/25"
+              className="mt-2 rounded-full bg-linear-to-r from-brand-red to-brand-orange px-5 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-brand-red/25"
             >
               Hire a Team
             </Link>
