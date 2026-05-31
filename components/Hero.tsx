@@ -16,7 +16,6 @@ export default function Hero() {
     (async () => {
       if (!vantaRef.current) return;
       const THREE = await import("three");
-      // @ts-expect-error - vanta has no bundled types
       const GLOBE = (await import("vanta/dist/vanta.globe.min")).default;
       if (cancelled || !vantaRef.current) return;
       effect = GLOBE({
