@@ -9,9 +9,9 @@
   --color-brand-navy-700: #131a36;
   --color-brand-navy-600: #1c2547;
   --color-brand-cream: #f8e3d0;
-  --color-surface: #ffffff;
-  --color-surface-soft: #fff8f3;
-  --color-surface-muted: #fdf1ea;
+  --color-surface: #fff8f2;
+  --color-surface-soft: #fffbf8;
+  --color-surface-muted: #fef5f0;
 
   /* Fonts */
   --font-jakarta: var(--font-jakarta);
