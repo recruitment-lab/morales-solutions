@@ -33,7 +33,7 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-brand-navy text-white">
-      <div className="h-1 w-full bg-gradient-to-r from-brand-red to-brand-orange" />
+      <div className="h-1 w-full bg-linear-to-r from-brand-red to-brand-orange" />
 
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_2fr]">
@@ -46,7 +46,7 @@ export default function Footer() {
             </p>
             <Link
               href="/services"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-red to-brand-orange px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-red/25 transition-transform hover:-translate-y-0.5"
+              className="brand-cta mt-6 px-6 py-3 text-sm"
             >
               Request Services
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

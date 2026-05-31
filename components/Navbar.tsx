@@ -27,7 +27,7 @@ export default function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-brand-navy/90 backdrop-blur-xl shadow-[0_8px_30px_-16px_rgba(10,15,35,0.55)] border-b border-brand-red/20"
-          : "bg-brand-navy/70 backdrop-blur-md"
+          : "bg-transparent"
       }`}
     >
       {/* Brand accent line, fades in on scroll */}
@@ -63,7 +63,7 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="group ml-1 inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-brand-red to-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-red/25 ring-1 ring-white/10 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-red/40"
+            className="brand-cta group ml-1 px-5 py-2.5 text-sm"
           >
             Hire a Team
             <svg
@@ -122,7 +122,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-linear-to-r from-brand-red to-brand-orange px-5 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-brand-red/25"
+              className="brand-cta mt-2 w-full px-5 py-3 text-center text-sm"
             >
               Hire a Team
             </Link>

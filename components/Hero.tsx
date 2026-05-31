@@ -29,9 +29,9 @@ export default function Hero() {
         scale: 1.0,
         scaleMobile: 1.0,
         backgroundColor: 0x0a0f23,
-        color: 0xff6600, // primary points/lines — brand orange
-        color2: 0xb30634, // secondary highlight — brand red
-        size: 0.9,
+        color: 0xff6600, // primary points — brand orange
+        color2: 0x3d3547, // connecting lines — muted warm gray
+        size: 0.55,
         points: 10,
         spacing: 15,
         showDots: true,
@@ -55,16 +55,16 @@ export default function Hero() {
       {/* Overlays for legibility */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-navy/30 via-brand-navy/40 to-brand-navy"
+        className="absolute inset-0 -z-10 bg-linear-to-b from-brand-navy/30 via-brand-navy/40 to-brand-navy"
       />
       <div
         aria-hidden
         className="absolute inset-0 -z-10 bg-grid opacity-[0.35]"
       />
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col items-start justify-center px-5 pt-32 pb-20 lg:px-8">
+      <div className="relative mx-auto flex min-h-svh max-w-7xl flex-col items-start justify-center px-5 pt-32 pb-20 lg:px-8">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/40 bg-brand-red/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-cream/90 font-sans">
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/40 bg-brand-red/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-cream/90 font-sans backdrop-blur-sm">
             <ShieldCheck size={14} className="text-brand-orange" />
             Compliant · Scalable · Secure
           </div>
@@ -84,7 +84,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-md bg-brand-red px-6 py-3.5 text-sm font-semibold text-brand-cream shadow-[0_16px_48px_-16px_rgba(179,6,52,0.8)] transition hover:bg-brand-orange font-sans"
+              className="brand-cta group px-6 py-3.5 text-sm font-sans"
             >
               Build Your Team
               <ArrowRight
@@ -94,7 +94,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#why-us"
-              className="inline-flex items-center gap-2 rounded-md border border-brand-cream/25 bg-white/[0.02] px-6 py-3.5 text-sm font-semibold text-brand-cream backdrop-blur-sm transition hover:border-brand-cream/50 hover:bg-white/[0.06] font-sans"
+              className="inline-flex items-center gap-2 rounded-md border border-brand-cream/25 bg-white/2 px-6 py-3.5 text-sm font-semibold text-brand-cream backdrop-blur-sm transition hover:border-brand-cream/50 hover:bg-white/6 font-sans"
             >
               Our Methodology
             </Link>
@@ -124,7 +124,7 @@ export default function Hero() {
       {/* fade to next section */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-brand-navy"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-brand-navy"
       />
     </section>
   );

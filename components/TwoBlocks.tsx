@@ -85,7 +85,7 @@ export default function TwoBlocks() {
               <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2 rounded-md bg-brand-red px-6 py-3.5 font-sans text-sm font-semibold text-brand-cream shadow-[0_16px_48px_-16px_rgba(179,6,52,0.9)] transition hover:bg-brand-orange"
+                  className="brand-cta group px-6 py-3.5 font-sans text-sm"
                 >
                   Schedule a Discovery Call
                   <ArrowUpRight
@@ -139,7 +139,7 @@ export default function TwoBlocks() {
 
             <Link
               href="/careers"
-              className="group mt-8 inline-flex items-center gap-2 rounded-md border border-brand-navy bg-brand-navy px-5 py-3 font-sans text-sm font-semibold text-brand-cream transition hover:bg-brand-red hover:border-brand-red"
+              className="brand-cta group mt-8 px-5 py-3 font-sans text-sm"
             >
               View Open Positions
               <ArrowUpRight

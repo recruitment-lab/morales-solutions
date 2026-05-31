@@ -43,7 +43,7 @@ export default function CTASection() {
                   hours.
                 </p>
                 <div className="mt-auto pt-8">
-                  <span className="inline-flex items-center gap-2 rounded-md bg-brand-red px-5 py-3 font-sans text-sm font-semibold text-brand-cream shadow-[0_16px_48px_-16px_rgba(179,6,52,0.9)] transition group-hover:bg-brand-orange">
+                  <span className="brand-cta inline-flex items-center gap-2 px-5 py-3 font-sans text-sm">
                     Request Services
                     <ArrowUpRight
                       size={16}
@@ -76,7 +76,7 @@ export default function CTASection() {
               positions open in your area of expertise.
             </p>
             <div className="mt-8">
-              <span className="inline-flex items-center gap-2 rounded-md border border-brand-cream/25 bg-white/[0.03] px-5 py-3 font-sans text-sm font-semibold text-brand-cream transition group-hover:border-brand-cream/60 group-hover:bg-white/[0.07]">
+              <span className="brand-cta inline-flex items-center gap-2 px-5 py-3 font-sans text-sm">
                 Apply Now
                 <ArrowUpRight
                   size={16}

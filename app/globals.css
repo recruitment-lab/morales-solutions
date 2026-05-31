@@ -69,6 +69,58 @@ html {
   background: linear-gradient(135deg, #b30634 0%, #ff6600 100%);
 }
 
+/* Brand CTA buttons */
+.brand-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 0.375rem;
+  text-shadow: 2px 2px 3px rgba(10, 15, 35, 0.35);
+  background: linear-gradient(
+      15deg,
+      #b30634,
+      #aa2068,
+      #cc3f47,
+      #de6f3d,
+      #f09f33,
+      #de6f3d,
+      #cc3f47,
+      #aa2068,
+      #b30634
+    )
+    no-repeat;
+  background-size: 300%;
+  color: #f8e3d0;
+  border: none;
+  background-position: left center;
+  box-shadow: 0 30px 10px -20px rgba(0, 0, 0, 0.2);
+  transition:
+    background 0.3s ease,
+    background-size 0.3s ease,
+    background-position 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.brand-cta:hover {
+  background-size: 320%;
+  background-position: right center;
+}
+
+.brand-cta:hover svg {
+  color: #fff;
+}
+
+.brand-cta svg {
+  width: 1.15em;
+  height: 1.15em;
+  color: currentColor;
+  transition: 0.3s ease;
+}
+
 /* Subtle radial accents */
 .radial-accent {
   background-image:
