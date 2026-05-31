@@ -30,7 +30,7 @@ export default function Hero() {
         scaleMobile: 1.0,
         backgroundColor: 0x0a0f23,
         color: 0xff6600, // primary points — brand orange
-        color2: 0x3d3547, // connecting lines — muted warm gray
+        color2: 0xb30634, // connecting lines — muted warm gray
         size: 0.55,
         points: 10,
         spacing: 15,

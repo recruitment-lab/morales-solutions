@@ -101,7 +101,7 @@ export default function TwoBlocks() {
           </article>
 
           {/* Careers (2/5 width) */}
-          <article className="relative overflow-hidden rounded-2xl border border-white/10 bg-brand-cream p-8 sm:p-10 lg:col-span-2">
+          <article className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#fff8f2] p-8 sm:p-10 lg:col-span-2">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brand-navy text-brand-cream">
                 <Users2 size={18} />
