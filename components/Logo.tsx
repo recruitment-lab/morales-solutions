@@ -14,7 +14,7 @@ export default function Logo({ variant = "dark", className = "" }: LogoProps) {
       className={`group inline-flex items-center ${className}`}
     >
       <Image
-        src="/logos/LOGO ROJO.png"
+        src="/logos/LOGO NARANJA.png"
         alt="Morales Solutions"
         width={220}
         height={72}
