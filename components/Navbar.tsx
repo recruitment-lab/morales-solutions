@@ -38,8 +38,8 @@ export default function Navbar() {
       />
 
       <nav
-        className={`mx-auto flex max-w-7xl items-center justify-between px-5 py-3 transition-all duration-300 sm:px-8 ${
-          scrolled ? "h-24" : "h-28"
+        className={`mx-auto flex max-w-7xl items-center justify-between px-5 transition-all duration-300 sm:px-8 ${
+          scrolled ? "py-7" : "py-8"
         }`}
       >
         <Logo variant="light" />
