@@ -1,13 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 type VantaInstance = { destroy: () => void };
 
 export default function Hero() {
   const vantaRef = useRef<HTMLDivElement | null>(null);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    const el = document.documentElement;
+    const update = () => setIsLight(el.classList.contains("light"));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(el, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let effect: VantaInstance | null = null;
@@ -28,7 +38,7 @@ export default function Hero() {
         minWidth: 200,
         scale: 1.0,
         scaleMobile: 1.0,
-        backgroundColor: 0x0d1536,
+        backgroundColor: isLight ? 0xfff8f2 : 0x0d1536,
         color: 0xff6600, // primary points — brand orange
         color2: 0xb30634, // connecting lines — muted warm gray
         size: 0.55,
@@ -42,7 +52,7 @@ export default function Hero() {
       cancelled = true;
       effect?.destroy();
     };
-  }, []);
+  }, [isLight]);
 
   return (
     <section className="relative isolate overflow-hidden">
@@ -94,7 +104,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#why-us"
-              className="inline-flex items-center gap-2 rounded-md border border-brand-cream/25 bg-white/2 px-6 py-3.5 text-sm font-semibold text-brand-cream backdrop-blur-sm transition hover:border-brand-cream/50 hover:bg-white/6 font-sans"
+              className="inline-flex items-center gap-2 rounded-md border border-brand-cream/25 bg-brand-cream/2 px-6 py-3.5 text-sm font-semibold text-brand-cream backdrop-blur-sm transition hover:border-brand-cream/50 hover:bg-brand-cream/6 font-sans"
             >
               Our Methodology
             </Link>

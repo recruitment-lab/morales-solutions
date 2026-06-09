@@ -27,7 +27,7 @@ export default function CTASection() {
               />
               <div className="relative flex h-full flex-col">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-md brand-gradient-bg text-brand-cream">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-md brand-gradient-bg text-surface">
                     <Briefcase size={20} />
                   </span>
                   <span className="rounded-full border border-brand-red/40 bg-brand-red/10 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-cream">
@@ -58,13 +58,13 @@ export default function CTASection() {
           {/* Careers — Secondary CTA */}
           <Link
             href="/careers"
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-brand-navy-700/40 p-8 transition hover:border-brand-cream/30 hover:bg-brand-navy-700/70 sm:p-10"
+            className="group relative overflow-hidden rounded-2xl border border-brand-cream/10 bg-brand-navy-700/40 p-8 transition hover:border-brand-cream/30 hover:bg-brand-navy-700/70 sm:p-10"
           >
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-brand-navy/60 text-brand-orange">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-brand-cream/10 bg-brand-navy/60 text-brand-orange">
                 <Users2 size={20} />
               </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-cream/80">
+              <span className="rounded-full border border-brand-cream/10 bg-brand-cream/5 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-cream/80">
                 Apply for a Role
               </span>
             </div>

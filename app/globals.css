@@ -163,3 +163,27 @@ html {
   background-size: 48px 48px;
 }
 
+/* ------------------------------------------------------------------ */
+/* Light theme — remaps the dark navy tokens to the surface palette   */
+/* so every utility class flips automatically.                        */
+/* ------------------------------------------------------------------ */
+html.light {
+  --color-brand-navy-light: #fff8f2;
+  --color-brand-navy-700: #fef5f0;
+  --color-brand-navy-600: #f7eadd;
+  --color-brand-cream: #0a0f23;
+  --background: #fff8f2;
+  --foreground: #0a0f23;
+}
+
+html.light .bg-grid {
+  background-image:
+    linear-gradient(rgba(10, 15, 35, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 15, 35, 0.05) 1px, transparent 1px);
+}
+
+html.light ::selection {
+  background: #b30634;
+  color: #fff8f2;
+}
+

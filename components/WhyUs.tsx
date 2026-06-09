@@ -29,7 +29,7 @@ export default function WhyUs() {
     <section id="why-us" className="py-24 bg-brand-navy-light relative overflow-hidden">
       {/* Background Accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-red/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
         <div className="max-w-3xl mb-16">
           <span className="text-brand-red font-jakarta font-bold text-sm tracking-widest uppercase mb-4 block">
             Strategic Partnership
