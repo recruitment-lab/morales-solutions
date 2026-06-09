@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import PageShell from "@/components/PageShell";
-import ContactForm from "@/components/ContactForm";
+import CalendlyWidget from "@/components/CalendlyWidget";
 
 export const metadata: Metadata = {
   title: "Request Services — Morales Solutions",
@@ -66,7 +66,7 @@ export default function ContactPage() {
             </div>
 
             <div className="lg:col-span-7">
-              <ContactForm />
+              <CalendlyWidget />
             </div>
           </div>
         </div>
