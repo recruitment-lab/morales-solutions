@@ -32,14 +32,14 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-brand-navy-light text-white">
+    <footer className="relative bg-brand-navy-light text-brand-cream">
       <div className="h-1 w-full bg-linear-to-r from-brand-red to-brand-orange" />
 
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_2fr]">
           <div className="max-w-sm">
             <Logo variant="light" />
-            <p className="mt-5 text-sm leading-6 text-white/60">
+            <p className="mt-5 text-sm leading-6 text-brand-cream/60">
               Compliant, scalable outsourcing teams for customer support, sales,
               and regulatory operations — built to protect your brand while you
               grow.
@@ -58,7 +58,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {columns.map((col) => (
               <div key={col.title}>
-                <h4 className="font-sans text-sm font-bold uppercase tracking-wider text-white/80">
+                <h4 className="font-sans text-sm font-bold uppercase tracking-wider text-brand-cream/80">
                   {col.title}
                 </h4>
                 <ul className="mt-4 space-y-3">
@@ -66,7 +66,7 @@ export default function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-white/55 transition-colors hover:text-white"
+                        className="text-sm text-brand-cream/55 transition-colors hover:text-brand-orange"
                       >
                         {link.label}
                       </Link>
@@ -80,12 +80,12 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-brand-cream/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 sm:flex-row sm:px-8">
-          <p className="text-sm text-white/55">
-            &copy; {year} <Link href="/" className="font-medium text-white/75 hover:text-white">Morales Solutions</Link>. All rights reserved.
+          <p className="text-sm text-brand-cream/55">
+            &copy; {year} <Link href="/" className="font-medium text-brand-cream/75 hover:text-brand-orange">Morales Solutions</Link>. All rights reserved.
           </p>
-          <p className="text-xs uppercase tracking-[0.16em] text-white/40">
+          <p className="text-xs uppercase tracking-[0.16em] text-brand-cream/40">
             Compliant · Scalable · Secure
           </p>
         </div>

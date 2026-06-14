@@ -43,8 +43,8 @@ export default function CareersForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-white/15 bg-brand-navy-700/60 p-10 text-center">
-        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full brand-gradient-bg text-brand-cream">
+      <div className="rounded-2xl border border-brand-cream/15 bg-brand-navy-700/60 p-10 text-center">
+        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full brand-gradient-bg text-surface">
           <CheckCircle2 size={22} />
         </div>
         <h3 className="mt-5 font-sans text-2xl font-bold text-brand-cream">
@@ -67,7 +67,7 @@ export default function CareersForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-white/10 bg-brand-navy-700/40 p-6 sm:p-8"
+      className="rounded-2xl border border-brand-cream/10 bg-brand-navy-700/40 p-6 sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
@@ -239,7 +239,7 @@ function Field({
         name={name}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-md border border-white/10 bg-brand-navy/50 px-4 py-2.5 text-sm text-brand-cream placeholder:text-brand-cream/35 outline-none transition focus:border-brand-red focus:bg-brand-navy/70"
+        className="w-full rounded-md border border-brand-cream/10 bg-brand-navy-600/50 px-4 py-2.5 text-sm text-brand-cream placeholder:text-brand-cream/35 outline-none transition focus:border-brand-red focus:bg-brand-navy-600/70"
       />
     </label>
   );
@@ -294,13 +294,13 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="w-full rounded-md border border-white/10 bg-brand-navy/50 px-4 py-2.5 text-sm text-brand-cream outline-none transition focus:border-brand-red focus:bg-brand-navy/70"
+        className="w-full rounded-md border border-brand-cream/10 bg-brand-navy-600/50 px-4 py-2.5 text-sm text-brand-cream outline-none transition focus:border-brand-red focus:bg-brand-navy-600/70"
       >
         <option value="" disabled>
           Select an option…
         </option>
         {options.map((o) => (
-          <option key={o} value={o} className="bg-brand-navy text-brand-cream">
+          <option key={o} value={o} className="bg-brand-navy-600 text-brand-cream">
             {o}
           </option>
         ))}

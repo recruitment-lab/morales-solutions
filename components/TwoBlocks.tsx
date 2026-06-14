@@ -48,10 +48,10 @@ export default function TwoBlocks() {
 
             <div className="relative">
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md brand-gradient-bg text-brand-cream">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md brand-gradient-bg text-surface">
                   <Briefcase size={18} />
                 </span>
-                <span className="rounded-full border border-brand-cream/20 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-cream/85">
+                <span className="rounded-full border border-brand-cream/20 bg-brand-cream/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-cream/85">
                   For Organizations · Most Requested
                 </span>
               </div>
@@ -101,9 +101,9 @@ export default function TwoBlocks() {
           </article>
 
           {/* Careers (2/5 width) */}
-          <article className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#fff8f2] p-8 sm:p-10 lg:col-span-2">
+          <article className="relative overflow-hidden rounded-2xl border border-brand-navy/10 bg-[#fff8f2] p-8 sm:p-10 lg:col-span-2">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brand-navy text-brand-cream">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brand-navy text-surface">
                 <Users2 size={18} />
               </span>
               <span className="rounded-full border border-brand-navy/15 bg-brand-navy/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-navy/80">

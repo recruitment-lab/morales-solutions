@@ -14,7 +14,7 @@ export default function IndustryStrip() {
   return (
     <section
       aria-label="Industries we serve"
-      className="relative border-y border-white/5 bg-brand-navy-light/40"
+      className="relative border-y border-brand-cream/5 bg-brand-navy-light/40"
     >
       <div className="overflow-hidden">
         <div className="flex w-max animate-marquee gap-10 py-4 text-[11px] uppercase tracking-[0.22em] text-brand-cream/55">

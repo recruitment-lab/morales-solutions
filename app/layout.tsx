@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Roboto } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -43,9 +44,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${roboto.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${jakarta.variable} ${roboto.variable} h-full antialiased light`}
     >
-      <body className="min-h-full flex flex-col bg-white text-brand-navy">
+      <body className="min-h-full flex flex-col">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`try{const theme=localStorage.getItem("theme");document.documentElement.classList.toggle("light",theme!=="dark")}catch(e){}`}
+        </Script>
         {children}
       </body>
     </html>

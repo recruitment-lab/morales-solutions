@@ -1,13 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 type VantaInstance = { destroy: () => void };
 
 export default function Hero() {
   const vantaRef = useRef<HTMLDivElement | null>(null);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    const el = document.documentElement;
+    const update = () => setIsLight(el.classList.contains("light"));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(el, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let effect: VantaInstance | null = null;
@@ -28,7 +38,7 @@ export default function Hero() {
         minWidth: 200,
         scale: 1.0,
         scaleMobile: 1.0,
-        backgroundColor: 0x0d1536,
+        backgroundColor: isLight ? 0xF5E1CD : 0x0d1536,
         color: 0xff6600, // primary points — brand orange
         color2: 0xb30634, // connecting lines — muted warm gray
         size: 0.55,
@@ -42,7 +52,7 @@ export default function Hero() {
       cancelled = true;
       effect?.destroy();
     };
-  }, []);
+  }, [isLight]);
 
   return (
     <section className="relative isolate overflow-hidden">
@@ -50,32 +60,38 @@ export default function Hero() {
       <div
         ref={vantaRef}
         aria-hidden
-        className="absolute inset-0 -z-10 bg-brand-navy-light"
+        className={`absolute inset-0 -z-10 ${isLight ? 'bg-[#F5E1CD]' : 'bg-brand-navy-light'}`}
       />
       {/* Overlays for legibility */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-linear-to-b from-brand-navy-light/30 via-brand-navy-light/40 to-brand-navy-light"
+        className={`absolute inset-0 -z-10 ${isLight ? 'bg-linear-to-b from-[#F5E1CD]/40 via-[#F5E1CD]/60 to-[#F5E1CD]' : 'hidden'}`}
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-grid opacity-[0.35]"
+        className={`absolute inset-0 -z-10 ${isLight ? 'hidden' : 'bg-grid opacity-[0.35]'}`}
       />
 
       <div className="relative mx-auto flex min-h-svh max-w-7xl flex-col items-start justify-center px-5 pt-32 pb-20 lg:px-8">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/40 bg-brand-red/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-cream/90 font-sans backdrop-blur-sm">
+          <div className={`inline-flex items-center gap-2 rounded-full border border-brand-red/40 bg-brand-red/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] font-sans backdrop-blur-sm ${isLight ? 'text-brand-navy/90' : 'text-brand-cream/90'}`}>
             <ShieldCheck size={14} className="text-brand-orange" />
             Compliant · Scalable · Secure
           </div>
 
-          <h1 className="mt-6 font-sans text-4xl font-extrabold leading-[1.05] tracking-tight text-brand-cream sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1
+            className={`mt-6 font-sans text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl ${isLight ? 'text-brand-navy' : 'text-brand-cream'}`}
+            style={isLight ? undefined : { textShadow: "0 2px 4px rgba(10, 15, 35, 0.42), 0 10px 24px rgba(10, 15, 35, 0.34)" }}
+          >
             Operate with <span className="brand-gradient-text">certainty.</span>
             <br />
             Scale without risk.
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-cream/75 sm:text-lg">
+          <p
+            className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${isLight ? 'text-brand-navy/75' : 'text-brand-cream'}`}
+            style={isLight ? undefined : { textShadow: "3px 2px 20px rgb(10 15 35), 0px 2px 20px rgb(10 15 35)" }}
+          >
             We deploy specialized teams in compliance operations, customer
             support, and sales — regulated-market-ready, brand-aligned, and
             operational from day one.
@@ -94,7 +110,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#why-us"
-              className="inline-flex items-center gap-2 rounded-md border border-brand-cream/25 bg-white/2 px-6 py-3.5 text-sm font-semibold text-brand-cream backdrop-blur-sm transition hover:border-brand-cream/50 hover:bg-white/6 font-sans"
+              className={`inline-flex items-center gap-2 rounded-md border px-6 py-3.5 text-sm font-semibold backdrop-blur-sm transition font-sans ${isLight ? 'border-brand-navy/25 bg-brand-navy/5 text-brand-navy hover:border-brand-navy/50 hover:bg-brand-navy/10' : 'border-brand-cream/25 bg-brand-cream/2 text-brand-cream hover:border-brand-cream/50 hover:bg-brand-cream/6'}`}
             >
               Our Methodology
             </Link>
@@ -109,10 +125,10 @@ export default function Hero() {
               { v: "0", k: "Regulatory sanctions" },
             ].map((s) => (
               <div key={s.k} className="border-l border-brand-red/60 pl-3">
-                <dt className="font-sans text-2xl font-bold text-brand-cream sm:text-3xl">
+                <dt className={`font-sans text-2xl font-bold sm:text-3xl ${isLight ? 'text-brand-navy' : 'text-brand-cream'}`}>
                   {s.v}
                 </dt>
-                <dd className="mt-1 text-xs uppercase tracking-wider text-brand-cream/60">
+                <dd className={`mt-1 text-xs uppercase tracking-wider ${isLight ? 'text-brand-navy/60' : 'text-brand-cream/60'}`}>
                   {s.k}
                 </dd>
               </div>
@@ -124,7 +140,7 @@ export default function Hero() {
       {/* fade to next section */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-brand-navy-light"
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent ${isLight ? 'to-[#F5E1CD]' : 'to-brand-navy-light'}`}
       />
     </section>
   );
