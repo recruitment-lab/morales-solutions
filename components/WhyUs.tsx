@@ -42,6 +42,43 @@ export default function WhyUs() {
           </p>
         </div>
 
+        {/* Comparison: Traditional Outsourcing vs Morales Solutions */}
+        <div className="relative mb-20 min-h-[420px] overflow-hidden rounded-2xl border border-brand-cream/10">
+          {/* Balanced scale background image */}
+          <img
+            aria-hidden
+            alt=""
+            src="/icons/balanza.svg"
+            className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-[0.15]"
+          />
+
+          <div className="relative z-10 grid grid-cols-1 gap-px bg-brand-cream/10 md:grid-cols-2">
+            {/* Traditional Outsourcing */}
+            <div className="bg-brand-navy-light/80 p-8 sm:p-10">
+              <span className="font-jakarta text-xs font-bold uppercase tracking-[0.2em] text-brand-cream/40">
+                Traditional Outsourcing
+              </span>
+              <p className="mt-5 font-roboto text-lg leading-relaxed text-brand-cream/45">
+                High turnover, zero cultural alignment, cost-cutting at the
+                expense of quality, purely transactional.
+              </p>
+            </div>
+
+            {/* Morales Solutions */}
+            <div className="relative bg-brand-navy-700/80 p-8 sm:p-10">
+              <div className="absolute left-0 top-0 h-full w-1 bg-linear-to-b from-brand-red to-brand-orange" />
+              <span className="font-jakarta text-xs font-bold uppercase tracking-[0.2em] text-brand-red">
+                Morales Solutions
+              </span>
+              <p className="mt-5 font-roboto text-lg leading-relaxed text-brand-cream">
+                Bilateral respect, strict vetting, long-term retention, and
+                radical transparency. We don&apos;t just move personnel; we
+                build operational infrastructure.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((pillar, index) => (
             <motion.div

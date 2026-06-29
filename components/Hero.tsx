@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck, TrendingUp, Award } from "lucide-react";
 
 type VantaInstance = { destroy: () => void };
 
@@ -83,18 +83,16 @@ export default function Hero() {
             className={`mt-6 font-sans text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl ${isLight ? 'text-brand-navy' : 'text-brand-cream'}`}
             style={isLight ? undefined : { textShadow: "0 2px 4px rgba(10, 15, 35, 0.42), 0 10px 24px rgba(10, 15, 35, 0.34)" }}
           >
-            Operate with <span className="brand-gradient-text">certainty.</span>
-            <br />
-            Scale without risk.
+            Strategic Outsourcing Built on <span className="brand-gradient-text">Operational Excellence.</span>
           </h1>
 
           <p
             className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${isLight ? 'text-brand-navy/75' : 'text-brand-cream'}`}
             style={isLight ? undefined : { textShadow: "3px 2px 20px rgb(10 15 35), 0px 2px 20px rgb(10 15 35)" }}
           >
-            We deploy specialized teams in compliance operations, customer
-            support, and sales — regulated-market-ready, brand-aligned, and
-            operational from day one.
+            We bridge the gap between top-tier talent and high-growth
+            companies. No fluff, no compliance headaches—just efficient,
+            scalable operations.
           </p>
 
           <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
@@ -117,12 +115,12 @@ export default function Hero() {
           </div>
 
           {/* Trust indicators */}
-          <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+          <dl id="trustIndicators" className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
             {[
               { v: "98.6%", k: "Compliance rate" },
               { v: "72h", k: "Median deployment" },
-              { v: "40+", k: "Regulated industries" },
-              { v: "0", k: "Regulatory sanctions" },
+              { v: "$150K", k: "Revenue rescue rate" },
+              { v: "15 sec", k: "Avg. answer time" },
             ].map((s) => (
               <div key={s.k} className="border-l border-brand-red/60 pl-3">
                 <dt className={`font-sans text-2xl font-bold sm:text-3xl ${isLight ? 'text-brand-navy' : 'text-brand-cream'}`}>
@@ -134,6 +132,59 @@ export default function Hero() {
               </div>
             ))}
           </dl>
+
+          <div className="mt-12 grid w-full max-w-3xl gap-4 sm:grid-cols-2">
+            {[
+              {
+                icon: TrendingUp,
+                label: "Inside Sales Impact",
+                stat: "$2M+",
+                statSuffix: "annual revenue recovered",
+              },
+              {
+                icon: Award,
+                label: "Outbound Sales Performance",
+                stat: "+58%",
+                statSuffix: "more sales vs. other teams",
+              },
+            ].map((card) => (
+              <div
+                key={card.label}
+                className="group relative overflow-hidden rounded-xl p-[1.5px] brand-gradient-bg transition hover:scale-[1.01]"
+              >
+                <div
+                  className={`relative flex items-center gap-4 rounded-[10px] px-4 py-4 backdrop-blur-sm ${
+                    isLight ? "bg-[#F5E1CD]" : "bg-brand-navy-700"
+                  }`}
+                >
+                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg brand-gradient-bg text-surface transition-transform duration-500 group-hover:scale-110">
+                    <card.icon size={20} />
+                  </span>
+                  <div className="min-w-0">
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="brand-gradient-text font-sans text-2xl font-extrabold sm:text-3xl">
+                        {card.stat}
+                      </span>
+                      <span
+                        className={`truncate text-xs font-medium ${
+                          isLight ? "text-brand-navy/60" : "text-brand-cream/60"
+                        }`}
+                      >
+                        {card.statSuffix}
+                      </span>
+                    </div>
+                    <p
+                      className={`mt-0.5 text-[11px] font-semibold uppercase tracking-[0.16em] ${
+                        isLight ? "text-brand-navy/70" : "text-brand-cream/70"
+                      }`}
+                    >
+                      {card.label}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
