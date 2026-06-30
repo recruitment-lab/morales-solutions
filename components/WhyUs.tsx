@@ -1,28 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Shield, Target, BarChart } from 'lucide-react'
-
-const pillars = [
-  {
-    id: '01',
-    title: 'Regulatory Alignment',
-    description: 'Teams onboarded with jurisdiction-specific compliance training. GDPR, HIPAA, FCA, CFPB-ready. Continuously audit-ready.',
-    icon: Shield,
-  },
-  {
-    id: '02',
-    title: 'Brand-Faithful Execution',
-    description: 'We design communication frameworks around your voice, escalation policies, and customer commitments — not generic scripts.',
-    icon: Target,
-  },
-  {
-    id: '03',
-    title: 'Elastic Scale, Fixed Quality',
-    description: 'From 5-agent pilots to 500-seat deployments. Performance floors are contractually guaranteed — not aspirational benchmarks.',
-    icon: BarChart,
-  },
-]
+import { Shield } from 'lucide-react'
 
 export default function WhyUs() {
   return (
@@ -43,18 +21,26 @@ export default function WhyUs() {
         </div>
 
         {/* Comparison: Traditional Outsourcing vs Morales Solutions */}
-        <div className="relative mb-20 min-h-[420px] overflow-hidden rounded-2xl border border-brand-cream/10">
+        <div id="comparisonContainer" className="relative mb-20 min-h-[520px] overflow-hidden rounded-2xl border border-brand-red/40 bg-linear-to-br from-brand-navy-700 to-brand-navy-light">
           {/* Balanced scale background image */}
-          <img
+          <div
             aria-hidden
-            alt=""
-            src="/icons/balanza.svg"
-            className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-[0.15]"
+            className="pointer-events-none absolute inset-0 bg-center bg-no-repeat bg-contain opacity-[0.1]"
+            style={{ backgroundImage: "url('/icons/balanza.svg')" }}
           />
 
-          <div className="relative z-10 grid grid-cols-1 gap-px bg-brand-cream/10 md:grid-cols-2">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-32 -left-16 h-72 w-72 rounded-full bg-brand-orange/15 blur-3xl"
+          />
+
+          <div className="relative z-10 grid min-h-[520px] grid-cols-1 gap-px  md:grid-cols-2">
             {/* Traditional Outsourcing */}
-            <div className="bg-brand-navy-light/80 p-8 sm:p-10">
+            <div className="flex h-full flex-col justify-center bg-brand-navy-light/5 p-8 sm:p-10">
               <span className="font-jakarta text-xs font-bold uppercase tracking-[0.2em] text-brand-cream/40">
                 Traditional Outsourcing
               </span>
@@ -65,9 +51,9 @@ export default function WhyUs() {
             </div>
 
             {/* Morales Solutions */}
-            <div className="relative bg-brand-navy-700/80 p-8 sm:p-10">
+            <div className="relative flex h-full flex-col justify-center bg-brand-navy-700/5 p-8 sm:p-10">
               <div className="absolute left-0 top-0 h-full w-1 bg-linear-to-b from-brand-red to-brand-orange" />
-              <span className="font-jakarta text-xs font-bold uppercase tracking-[0.2em] text-brand-red">
+              <span className="font-jakarta text-xs font-bolder uppercase tracking-[0.2em] text-brand-orange">
                 Morales Solutions
               </span>
               <p className="mt-5 font-roboto text-lg leading-relaxed text-brand-cream">
@@ -75,45 +61,47 @@ export default function WhyUs() {
                 radical transparency. We don&apos;t just move personnel; we
                 build operational infrastructure.
               </p>
+
+              <div className="mt-7">
+                <ul className="relative grid gap-4 md:grid-cols-2 md:gap-8">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-y-1 left-1/2 hidden w-px -translate-x-1/2 bg-linear-to-b from-transparent via-brand-cream/15 to-transparent md:block"
+                  />
+                  <li className="flex gap-2.5">
+                    <span
+                      aria-hidden
+                      className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-brand-orange shadow-[0_0_14px_rgba(255,102,0,0.4)]"
+                    />
+                    <div>
+                      <p className="font-jakarta text-[10px] font-bold uppercase tracking-[0.18em] text-brand-orange">
+                        Data Privacy &amp; NDA Standards
+                      </p>
+                      <p className="mt-1.5 max-w-sm font-roboto text-xs leading-relaxed text-brand-cream/72">
+                        Strict compliance with data protection protocols, confidentiality controls, and NDA-first operating standards.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex gap-2.5">
+                    <span
+                      aria-hidden
+                      className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-brand-orange shadow-[0_0_14px_rgba(255,102,0,0.4)]"
+                    />
+                    <div>
+                      <p className="font-jakarta text-[10px] font-bold uppercase tracking-[0.18em] text-brand-orange">
+                        CRM &amp; System Compliance
+                      </p>
+                      <p className="mt-1.5 max-w-sm font-roboto text-xs leading-relaxed text-brand-cream/72">
+                        Zero friction with your existing tech stack, with clean handoffs, structured access, and backend discipline.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pillars.map((pillar, index) => (
-            <motion.div
-              key={pillar.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group p-8 rounded-xl bg-brand-cream/[0.02] border border-brand-cream/10 hover:border-brand-red/30 transition-all duration-500 relative overflow-hidden"
-            >
-              {/* Hover Glow */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-red/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative z-10">
-                <div className="flex justify-between items-start mb-8">
-                  <div className="p-3 rounded-lg bg-brand-red/10 text-brand-red group-hover:scale-110 transition-transform duration-500">
-                    <pillar.icon size={28} />
-                  </div>
-                  <span className="font-jakarta text-4xl font-black text-brand-cream/70 group-hover:text-brand-red/30 transition-colors">
-                    {pillar.id}
-                  </span>
-                </div>
-
-                <h3 className="font-jakarta text-xl font-bold text-brand-cream mb-4 group-hover:text-brand-red transition-colors">
-                  {pillar.title}
-                </h3>
-                <p className="font-roboto text-brand-cream/50 leading-relaxed group-hover:text-brand-cream/70 transition-colors">
-                  {pillar.description}
-                </p>
-              </div>
-
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-brand-red to-brand-orange group-hover:w-full transition-all duration-500" />
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   )
