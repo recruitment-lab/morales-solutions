@@ -21,10 +21,17 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
     } catch {}
   };
 
+  const ariaLabel = mounted
+    ? isLight
+      ? "Switch to dark mode"
+      : "Switch to light mode"
+    : "Toggle theme";
+
   return (
     <button
       type="button"
-      aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
+      aria-label={ariaLabel}
+      suppressHydrationWarning
       onClick={toggle}
       className={`flex h-10 w-10 items-center justify-center rounded-lg border border-brand-cream/20 text-brand-cream transition-colors hover:border-brand-orange/60 hover:text-brand-orange ${className}`}
     >
