@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+const CAREERS_WEBAPP_URL = process.env.NEXT_PUBLIC_CAREERS_SHEET_WEBAPP_URL;
+
 const ENGLISH_LEVELS = [
   "A1 (Beginner)",
   "A2 (Elementary)",
@@ -31,14 +33,74 @@ const WORK_STATUSES = [
 ];
 
 export default function CareersForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+
+    if (!CAREERS_WEBAPP_URL) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("submitting");
-    await new Promise((r) => setTimeout(r, 700));
-    setStatus("success");
-    (e.currentTarget as HTMLFormElement).reset();
+
+    try {
+      const formData = new FormData(form);
+      const payload = new URLSearchParams();
+      const phone = String(formData.get("phone") ?? "")
+        .replace(/[()\s-]/g, "")
+        .trim();
+
+      payload.set("EmailAddress", String(formData.get("emailAddress") ?? ""));
+      payload.set("FirstName", String(formData.get("firstName") ?? ""));
+      payload.set("LastName", String(formData.get("lastName") ?? ""));
+      payload.set(
+        "CountryOfResidency",
+        String(formData.get("countryOfResidency") ?? ""),
+      );
+      payload.set("City", String(formData.get("city") ?? ""));
+      payload.set("Phone", phone);
+      payload.set("Email", String(formData.get("email") ?? ""));
+      payload.set("WorkEmail", String(formData.get("workEmail") ?? ""));
+      payload.set("Speedtest", String(formData.get("speedTestUrl") ?? ""));
+
+      payload.set("CV", String(formData.get("cvLink") ?? ""));
+
+      payload.set("VideoLink", String(formData.get("videoLink") ?? ""));
+      payload.set("EnglishLevel", String(formData.get("englishLevel") ?? ""));
+      payload.set("Experience", String(formData.get("experience") ?? ""));
+      payload.set("InternetInfo", String(formData.get("internetSetup") ?? ""));
+      payload.set(
+        "SalaryExpectations",
+        String(formData.get("monthlyPaymentExpectations") ?? ""),
+      );
+      payload.set("Avaliability", String(formData.get("workingScheduleAvailability") ?? ""));
+      payload.set("ChangeCountry", String(formData.get("countryChangePlans") ?? ""));
+      payload.set("CalednlyLink", String(formData.get("calendlyLink") ?? ""));
+      payload.set("WorkStatus", String(formData.get("workStatus") ?? ""));
+      payload.set(
+        "SalaryExpectationMonthly",
+        String(formData.get("salaryExpectationMonthly") ?? ""),
+      );
+
+      const response = await fetch(CAREERS_WEBAPP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: payload.toString(),
+      });
+
+      form.reset();
+      setStatus(response ? "success" : "success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "success") {
@@ -59,6 +121,25 @@ export default function CareersForm() {
           className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange hover:text-brand-cream"
         >
           Submit another application
+        </button>
+      </div>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <div className="rounded-2xl border border-brand-red/40 bg-brand-navy-700/60 p-10 text-center">
+        <h3 className="font-sans text-2xl font-bold text-brand-cream">
+          We couldn&apos;t send your application.
+        </h3>
+        <p className="mt-2 text-sm text-brand-cream/70">
+          Check that the Apps Script URL is configured and try again.
+        </p>
+        <button
+          onClick={() => setStatus("idle")}
+          className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange hover:text-brand-cream"
+        >
+          Back to form
         </button>
       </div>
     );
@@ -124,10 +205,11 @@ export default function CareersForm() {
           placeholder="https://www.speedtest.net/result/..."
         />
         <Field
-          label="Attach CV"
-          name="cv"
-          type="file"
+          label="CV / Drive link"
+          name="cvLink"
+          type="url"
           required
+          placeholder="https://drive.google.com/..."
         />
         <Field
           label="Short video link in English"
@@ -239,7 +321,7 @@ function Field({
         name={name}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-md border border-brand-cream/10 bg-brand-navy-600/50 px-4 py-2.5 text-sm text-brand-cream placeholder:text-brand-cream/35 outline-none transition focus:border-brand-red focus:bg-brand-navy-600/70"
+        className="w-full rounded-md border border-brand-cream/15 bg-brand-navy-600 px-4 py-2.5 text-sm text-brand-cream placeholder:text-brand-cream/40 outline-none transition-colors focus:border-brand-red focus:bg-brand-navy-600 focus:ring-2 focus:ring-brand-red/15"
       />
     </label>
   );
@@ -267,7 +349,7 @@ function TextAreaField({
         required={required}
         rows={4}
         placeholder={placeholder}
-        className="w-full rounded-md border border-white/10 bg-brand-navy/50 px-4 py-3 text-sm text-brand-cream placeholder:text-brand-cream/35 outline-none transition focus:border-brand-red focus:bg-brand-navy/70"
+        className="w-full rounded-md border border-brand-cream/15 bg-brand-navy-600 px-4 py-3 text-sm text-brand-cream placeholder:text-brand-cream/40 outline-none transition-colors focus:border-brand-red focus:bg-brand-navy-600 focus:ring-2 focus:ring-brand-red/15"
       />
     </label>
   );
@@ -294,7 +376,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="w-full rounded-md border border-brand-cream/10 bg-brand-navy-600/50 px-4 py-2.5 text-sm text-brand-cream outline-none transition focus:border-brand-red focus:bg-brand-navy-600/70"
+        className="w-full rounded-md border border-brand-cream/15 bg-brand-navy-600 px-4 py-2.5 text-sm text-brand-cream outline-none transition-colors focus:border-brand-red focus:bg-brand-navy-600 focus:ring-2 focus:ring-brand-red/15"
       >
         <option value="" disabled>
           Select an option…
