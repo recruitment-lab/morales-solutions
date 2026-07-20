@@ -17,7 +17,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Morales Solutions — Compliant Outsourcing Teams for Support, Sales & Compliance",
+  title:
+    "Morales Solutions — Compliant Outsourcing Teams for Support, Sales & Compliance",
   description:
     "Morales Solutions deploys compliant, scalable outsourcing teams for customer support, sales, and regulatory operations — built to protect your brand while you grow.",
   keywords: [
@@ -28,11 +29,16 @@ export const metadata: Metadata = {
     "BPO",
     "call center",
   ],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "Morales Solutions — Compliant Outsourcing Teams",
     description:
       "Deploy specialized, compliance-ready teams for support, sales, and operations — operational from day one.",
     type: "website",
+    images: ["/og-morales-1.png"],
   },
 };
 
